@@ -31,10 +31,11 @@ def run(chain):
     app = FastAPI(
         title="LangChain",
         version="1.0",
-        description=f"Local Langserve instance running {os.environ.get('OLLAMA_MODEL')}"
+        description=f"Local Langserve instance running {os.environ.get('OLLAMA_MODEL')}",
     )
     add_routes(app, chain, path="/chain")
     uvicorn.run(app, host="localhost", port=8000)
+
 
 if __name__ == "__main__":
     greet()
