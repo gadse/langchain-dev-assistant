@@ -21,17 +21,17 @@ import shell
 
 
 def greet():
-    print("ohai! 🦈")
+    print("🦈 ohai!\n")
 
 
 def pre_flight_checks():
     env = dotenv.find_dotenv()
-    print(f"dotenv file: >>{env}<<")
+    print(f"📋 Found configuration: >>{env}<<")
     dotenv.load_dotenv(env)
 
 
 def goobye():
-    print("k thx bye! 👋")
+    print("👋 k thx bye!")
 
 
 def build_llm():
