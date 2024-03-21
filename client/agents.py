@@ -5,10 +5,10 @@ See Also:
 
 import requests
 
-from langchain import LLMMathChain
+from langchain.chains import LLMMathChain
 from langchain import hub
 from langchain.agents import AgentType, initialize_agent, create_react_agent, AgentExecutor
-from langchain.tools import (
+from langchain_community.tools import (
     BaseTool,
     StructuredTool,
     Tool,
@@ -73,7 +73,7 @@ class AlpacaLLM(LLM):
 llm = AlpacaLLM()
 
 
-def build_tooled_agent(llm):
+def build_tooled_agent(llm) -> AgentExecutor:
     """
     Used https://www.comet.com/site/blog/enhancing-langchain-agents-with-custom-tools/
     """
@@ -93,7 +93,7 @@ def build_tooled_agent(llm):
     #                 "information on people, places, history, etc.",
     # )
 
-    llm_math_chain = LLMMathChain(llm=llm, verbose=True)
+    llm_math_chain = LLMMathChain.from_llm(llm)
     math_tool = Tool.from_function(
         func=llm_math_chain.run,
         name="Calculator",

@@ -2,13 +2,13 @@
 Here we follow the outdated but well-explained tutorial https://www.youtube.com/watch?v=aywZrzNaKjs
 while replacing tech from OpenAI and PineCone with llama and faiss.
 """
-
 import time
 import os
 
 import dotenv
 
-from langchain import PromptTemplate
+from langchain.prompts import PromptTemplate
+from langchain.agents import AgentExecutor
 from langchain.chains import LLMChain
 from langchain.chains import SimpleSequentialChain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -16,7 +16,8 @@ from langchain_community.llms import Ollama
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
-from client.agents import build_tooled_agent
+import agents
+import shell
 
 
 def greet():
@@ -111,11 +112,12 @@ if __name__ == "__main__":
     # vector_store = store(splitted)
     # print(search(vector_store))
 
-    agent = build_tooled_agent(llm)
-    agent.invoke({"input": "What is the 10th fibonacci number?"})
+    agent: AgentExecutor = agents.build_tooled_agent(llm)
+    #agent.invoke({"input": "What is the 10th fibonacci number?"})
+    shell.launch(agent)
 
     end = time.process_time()
     elapsed = str(round(end - start, 2))
-    print(f"Elapsed time: {elapsed} seconds")
+    print(f"Elapsed session time: {elapsed} seconds")
 
     goobye()
