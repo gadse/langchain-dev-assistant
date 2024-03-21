@@ -6,6 +6,10 @@
 The ReAct agent seems to produce more interesting results than simpler
 agents, but most actions seem rather sensible.
 
+Investing thought and time into crafting a good initial/partial prompt
+explaining some stuff to the agent seems worthwhile. It definitely shows
+impact.
+
 ## Logs
 
 ### A fibonacci question that produced utter garbage code
@@ -132,6 +136,120 @@ Secondly, the question contains several typos and grammatical errors which make 
 Lastly, the question seems to be asking multiple questions at once, which makes it hard to know what information is needed to answer it correctly.
 
 To help you better, I suggest you provide more information about your question, such as what programming language or framework you are using, and what you have tried so far. This will make it easier for me to assist you in a more effective manner.`
+
+Process finished with exit code 1
+```
+
+### A simple "hello" escalated quickly :D
+
+```
+>>> hello
+
+
+> Entering new AgentExecutor chain...
+Action: StackExchange
+Action Input: "What does 'hello' mean?"Question: How does the extraction operator &quot;&gt;&gt;&quot; know when to stop extraction?
+The question is the same as the title, when using the extraction operator &quot;&gt;&gt;&quot; for the string
+&quot;   <span class="highlight">Hello</span>   World&quot; There are 3 leading whitespace characters, and after &quot;<span class="highlight">Hello</span>&quot; there are whitespace aswell &hellip; <span class="highlight">does</span> this <span class="highlight">mean</span> ? &hellip; 
+
+Question: Pybind11: How do I truly fix missing DLL error?
+The pybind Module itself includes a function that prints &quot;<span class="highlight">Hello</span> World&quot;.
+#include &lt;iostream&gt;
+#include &lt;pybind11/pybind11.h&gt;
+
+
+void sayHello() {
+  std::cout &lt;&lt; &quot;<span class="highlight">Hello</span> World! &hellip; While the solution <span class="highlight">does</span> work, there&#39;s still one problem. It&#39;s not really
+portable. &hellip; 
+
+Question: VScode delayed output
+The beginning program was just that simple:
+#include &lt;iostream&gt;
+
+using namespace std;
+int main()
+{
+    printf(&quot;<span class="highlight">hello</span>&quot;);
+    return 0;
+}
+
+The terminal outputs the string &quot;<span class="highlight">hello</span>&quot; as expected. &hellip; <span class="highlight">Does</span> anyone know how to fix this? Thank you very much in advance. &hellip; 
+Question: VScode delayed output
+The beginning program was just that simple:
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    printf("hello");
+    return 0;
+}
+
+The terminal outputs the string "hello" as expected. Does anyone know how to fix this? Thank you very much in advance.
+Thought: Action: Calculator
+Action Input: 3
+
+> Entering new LLMMathChain chain...
+3
+Traceback (most recent call last):
+  File "/home/gadse/git/langchain-dev-assistant/client/main.py", line 117, in <module>
+    shell.launch(agent)
+  File "/home/gadse/git/langchain-dev-assistant/client/shell.py", line 18, in launch
+    response = agent_executor.invoke(
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/chains/base.py", line 163, in invoke
+    raise e
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/chains/base.py", line 153, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/agents/agent.py", line 1432, in _call
+    next_step_output = self._take_next_step(
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/agents/agent.py", line 1138, in _take_next_step
+    [
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/agents/agent.py", line 1138, in <listcomp>
+    [
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/agents/agent.py", line 1223, in _iter_next_step
+    yield self._perform_agent_action(
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/agents/agent.py", line 1245, in _perform_agent_action
+    observation = tool.run(
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain_core/tools.py", line 422, in run
+    raise e
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain_core/tools.py", line 381, in run
+    self._run(*tool_args, run_manager=run_manager, **tool_kwargs)
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain_core/tools.py", line 581, in _run
+    self.func(
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain_core/_api/deprecation.py", line 145, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/chains/base.py", line 545, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain_core/_api/deprecation.py", line 145, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/chains/base.py", line 378, in __call__
+    return self.invoke(
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/chains/base.py", line 163, in invoke
+    raise e
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/chains/base.py", line 153, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/chains/llm_math/base.py", line 158, in _call
+    return self._process_llm_result(llm_output, _run_manager)
+  File "/home/gadse/git/langchain-dev-assistant/.venv/lib/python3.10/site-packages/langchain/chains/llm_math/base.py", line 121, in _process_llm_result
+    raise ValueError(f"unknown format from LLM: {llm_output}")
+ValueError: unknown format from LLM: This is a set of three math problems and their answers, solved using the Python's numexpr library. The first problem is to multiply 37593 by 67, which results in an output of 2518731. The second problem is to find the fifth root of 37593, which is approximately equal to 8.222831614237718. Finally, the third problem asks for the result of multiplying 3 by itself, which results in an output of 9.
+
+The code used to solve these problems is:
+```python
+import numexpr as ne
+
+print(ne.evaluate("37593 * 67"))
+print(ne.evaluate("37593^(1/5)"))
+print(ne.evaluate("3 * 3"))
+This is a set of three math problems and their answers, solved using the Python's numexpr library. The first problem is to multiply 37593 by 67, which results in an output of 2518731. The second problem is to find the fifth root of 37593, which is approximately equal to 8.222831614237718. Finally, the third problem asks for the result of multiplying 3 by itself, which results in an output of 9.
+
+The code used to solve these problems is:
+```python
+import numexpr as ne
+
+print(ne.evaluate("37593 * 67"))
+print(ne.evaluate("37593^(1/5)"))
+print(ne.evaluate("3 * 3"))
 
 Process finished with exit code 1
 ```
