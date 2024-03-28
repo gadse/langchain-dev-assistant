@@ -26,8 +26,11 @@ def greet():
 
 def pre_flight_checks():
     env = dotenv.find_dotenv()
+    secret_env = dotenv.find_dotenv(".secret.env")
     print(f"📋 Found configuration: >>{env}<<")
     dotenv.load_dotenv(env)
+    print(f"📋 Found configuration: >>{secret_env}<<")
+    dotenv.load_dotenv(secret_env)
 
 
 def goobye():
