@@ -81,17 +81,23 @@ def build_tooled_agent(llm) -> AgentExecutor:
     stack_exchange_tool = Tool.from_function(
         func=stack_exchange.run,
         name="StackExchange",
-        description="You coding and programming related search engine for StackExchange. Useful for when you need to search"
-                    "the internet for coding, programming, or computer related information.",
+        description="""
+        Your coding and programming related search engine for StackExchange. Useful for when you need to search
+        the internet for coding, programming, or computer related information. Only use this tool if the question
+        you want to answer is coding-related. Do not use this tool unless you're thinking about a coding-related 
+        question. When you use this tool, describe why you are using it.
+        """,
     )
 
-    # duck_duck_go = DuckDuckGoSearchRun()
-    # search_tool = Tool.from_function(
-    #     func=duck_duck_go.run,
-    #     name="Internet Search",
-    #     description="Your internet search engine. Useful for when you need to search the internet for general"
-    #                 "information on people, places, history, etc.",
-    # )
+    duck_duck_go = DuckDuckGoSearchRun()
+    search_tool = Tool.from_function(
+        func=duck_duck_go.run,
+        name="Internet Search",
+        description="""
+        Your internet search engine. Useful for when you need to search the internet for general
+        information on people, places, history, etc.
+        """,
+    )
 
     llm_math_chain = LLMMathChain.from_llm(llm)
     math_tool = Tool.from_function(
@@ -141,7 +147,7 @@ def build_tooled_agent(llm) -> AgentExecutor:
 
     tools = [
         stack_exchange_tool,
-        #search_tool,
+        search_tool,
         math_tool,
         repl_tool
     ]
